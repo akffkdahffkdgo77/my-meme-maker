@@ -6,8 +6,6 @@ interface IProps {
 
 export default function Layout({ children }: IProps) {
     return (
-        <>
-            <main className="max-w-6xl mx-auto min-h-screen py-10">{children}</main>
-        </>
+        <main className="flex justify-center items-center min-h-screen py-10 bg-[#191919] text-white">{children}</main>
     );
 }

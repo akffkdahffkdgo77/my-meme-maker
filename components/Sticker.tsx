@@ -1,19 +1,48 @@
-import React from 'react';
+import React, { Dispatch, FormEvent, SetStateAction } from 'react';
 
 import Image from 'next/image';
 
-import { IMAGE_LIST } from 'utils';
-
 interface IProps {
+    imageList: string[];
+    setImageList: Dispatch<SetStateAction<string[]>>;
     handleIndex: (index: number) => void;
 }
 
-export default function Sticker({ handleIndex }: IProps) {
+export default function Sticker({ imageList, setImageList, handleIndex }: IProps) {
+    const onChange = (e: FormEvent<HTMLInputElement>) => {
+        const file = e.currentTarget.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function onLoad() {
+                setImageList((prev) => [...prev, URL.createObjectURL(file)]);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     return (
         <section className="relative max-h-[350px] overflow-y-auto">
-            <h2 className="text-xl mb-5 text-center font-bold font-mono sticky top-0 bg-white z-50">Stickers</h2>
-            <div className="flex gap-5 justify-between flex-wrap px-5">
-                {IMAGE_LIST.map((image, index) => (
+            <div className="sticky top-0 z-50 mb-5 bg-[#191919]">
+                <h2 className="text-xl text-center font-bold font-mono flex-1">Stickers</h2>
+                <label
+                    htmlFor="upload"
+                    className="absolute right-2.5 top-0 cursor-pointer px-[5px] border border-white rounded-md font-mono text-[12px]"
+                >
+                    Upload
+                    <input
+                        className="invisible w-0 h-0"
+                        id="upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={onChange}
+                        onClick={(e) => {
+                            e.currentTarget.value = '';
+                        }}
+                    />
+                </label>
+            </div>
+            <div className="flex gap-5 flex-wrap p-5">
+                {imageList.map((image, index) => (
                     <Image
                         key={index}
                         src={image}
