@@ -24,6 +24,7 @@
 
 ## NPM Packages
 
+-   Next
 -   React v18 + TypeScript
 -   tailwindcss
 
@@ -34,4 +35,4 @@
 
 ## Deploy
 
--   gh-pages
+-   vercel
