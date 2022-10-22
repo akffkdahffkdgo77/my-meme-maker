@@ -27,39 +27,6 @@ const Home: NextPage = () => {
         context.fillRect(0, 0, 500, 500);
     }, []);
 
-    const onClick = (e: MouseEvent<HTMLCanvasElement>) => {
-        const canvas = canvasRef.current;
-        const context = canvas!.getContext('2d')!;
-        if (selectedRef.current !== -1) {
-            const image = new Image();
-            image.src = imageList[selectedRef.current];
-            image.onload = function onLoad() {
-                const width = 200;
-                const height = 300;
-                context!.drawImage(image, e.nativeEvent.offsetX - 100, e.nativeEvent.offsetY - 150, width, height);
-                selectedRef.current = -1;
-            };
-        }
-    };
-
-    const onMouseMove = (e: MouseEvent<HTMLCanvasElement>) => {
-        const canvas = canvasRef.current;
-        const context = canvas!.getContext('2d')!;
-        context.strokeStyle = colorRef.current;
-        context.lineWidth = lineWidthRef.current;
-
-        const xCoord = e.nativeEvent.offsetX;
-        const yCoord = e.nativeEvent.offsetY;
-
-        if (!mode) {
-            context.beginPath();
-            context.moveTo(xCoord, yCoord);
-        } else if (mode === 'draw') {
-            context.lineTo(xCoord, yCoord);
-            context.stroke();
-        }
-    };
-
     const handleIndex = (index: number) => {
         selectedRef.current = index;
     };
@@ -68,6 +35,7 @@ const Home: NextPage = () => {
         if (erase) {
             return;
         }
+
         if (mode === 'background') {
             const canvas = canvasRef.current;
             const context = canvas!.getContext('2d')!;
@@ -113,6 +81,39 @@ const Home: NextPage = () => {
         const canvas = canvasRef.current;
         const context = canvas!.getContext('2d')!;
         context.clearRect(0, 0, 500, 500);
+    };
+
+    const onMouseMove = (e: MouseEvent<HTMLCanvasElement>) => {
+        const canvas = canvasRef.current;
+        const context = canvas!.getContext('2d')!;
+        context.strokeStyle = colorRef.current;
+        context.lineWidth = lineWidthRef.current;
+
+        const xCoord = e.nativeEvent.offsetX;
+        const yCoord = e.nativeEvent.offsetY;
+
+        if (!mode) {
+            context.beginPath();
+            context.moveTo(xCoord, yCoord);
+        } else if (mode === 'draw') {
+            context.lineTo(xCoord, yCoord);
+            context.stroke();
+        }
+    };
+
+    const onClick = (e: MouseEvent<HTMLCanvasElement>) => {
+        const canvas = canvasRef.current;
+        const context = canvas!.getContext('2d')!;
+        if (selectedRef.current !== -1) {
+            const image = new Image();
+            image.src = imageList[selectedRef.current];
+            image.onload = function onLoad() {
+                const width = 200;
+                const height = 300;
+                context!.drawImage(image, e.nativeEvent.offsetX - 100, e.nativeEvent.offsetY - 150, width, height);
+                selectedRef.current = -1;
+            };
+        }
     };
 
     return (
