@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 
 import Head from 'next/head';
 
@@ -19,6 +19,13 @@ const Home: NextPage = () => {
     const [mode, setMode] = useState('pattern');
     const [erase, setErase] = useState(false);
     const [imageList, setImageList] = useState<string[]>([]);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const context = canvas!.getContext('2d')!;
+        context.fillStyle = '#ffffff';
+        context.fillRect(0, 0, 500, 500);
+    }, []);
 
     const onClick = (e: MouseEvent<HTMLCanvasElement>) => {
         const canvas = canvasRef.current;
