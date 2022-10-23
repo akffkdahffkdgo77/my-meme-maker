@@ -1,5 +1,7 @@
 # My Sticker
 
+<img width="966" alt="스크린샷 2022-10-23 오후 12 36 54" src="https://user-images.githubusercontent.com/52883505/197372256-7891065c-615e-4002-9841-809fadce7bb8.png">
+
 ## 목표
 
 나만의 이미지 꾸미기 그림판
