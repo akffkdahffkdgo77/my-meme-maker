@@ -28,6 +28,26 @@ Clone Coding Paint
 
 -   Create Patterns
 
+## Folder Structure
+```
+.
+├── components
+│   ├── ColorPicker.tsx
+│   ├── Controls.tsx
+│   ├── Sticker.tsx
+│   └── Stroke.tsx
+├── constants
+│   └── data.ts
+├── layouts
+│   └── layout.tsx
+├── pages
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   └── index.tsx
+└── styles
+    └── globals.css
+```
+
 ## NPM Packages
 
 -   Next
