@@ -2,10 +2,7 @@ import React, { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'rea
 
 import Head from 'next/head';
 
-import ColorPicker from 'components/ColorPicker';
-import Controls from 'components/Controls';
-import Sticker from 'components/Sticker';
-import Stroke from 'components/Stroke';
+import { ColorPicker, Controls, Sticker, Stroke } from 'components';
 
 import type { NextPage } from 'next';
 

@@ -1,12 +1,10 @@
 import React from 'react';
 
+import { IColorPicker } from 'components/ColorPicker/types';
+
 import { COLORS } from 'constants/data';
 
-interface IProps {
-    handleColor: (color: string) => void;
-}
-
-export default function ColorPicker({ handleColor }: IProps) {
+export default function ColorPicker({ handleColor }: IColorPicker) {
     return (
         <div className="flex items-center justify-center gap-2.5">
             {COLORS.map(({ name, color }) => (

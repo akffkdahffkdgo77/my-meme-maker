@@ -1,10 +1,8 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
-interface IProps {
-    handleLineWidth: (e: ChangeEvent<HTMLInputElement>) => void;
-}
+import { IStroke } from 'components/Stroke/types';
 
-export default function Stroke({ handleLineWidth }: IProps) {
+export default function Stroke({ handleLineWidth }: IStroke) {
     return (
         <div className="mt-2.5">
             <input

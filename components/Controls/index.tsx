@@ -1,14 +1,8 @@
 import React from 'react';
 
-interface IProps {
-    mode: string;
-    handleBackground: () => void;
-    handleSave: () => void;
-    handleErase: () => void;
-    handleReset: () => void;
-}
+import { IControls } from 'components/Controls/types';
 
-export default function Controls({ mode, handleBackground, handleSave, handleErase, handleReset }: IProps) {
+export default function Controls({ mode, handleBackground, handleSave, handleErase, handleReset }: IControls) {
     return (
         <div className="flex items-center gap-2.5 my-5">
             <button

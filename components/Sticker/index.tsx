@@ -1,14 +1,10 @@
-import React, { Dispatch, FormEvent, SetStateAction } from 'react';
+import React, { FormEvent } from 'react';
 
 import Image from 'next/image';
 
-interface IProps {
-    imageList: string[];
-    setImageList: Dispatch<SetStateAction<string[]>>;
-    handleIndex: (index: number) => void;
-}
+import { ISticker } from 'components/Sticker/types';
 
-export default function Sticker({ imageList, setImageList, handleIndex }: IProps) {
+export default function Sticker({ imageList, setImageList, handleIndex }: ISticker) {
     const onChange = (e: FormEvent<HTMLInputElement>) => {
         const file = e.currentTarget.files?.[0];
         if (file) {
