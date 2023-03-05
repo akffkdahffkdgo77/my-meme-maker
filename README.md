@@ -10,25 +10,25 @@
 
   <h3>🗒️ Project Description</h3>
 
-  __*Clone Coding Paint*__
+**_Clone Coding Paint_**
 
   <h3>😎 Project Features</h3>
 
-  ✨ Canvas    
-  ✨ Controls    
-      ✨ Change Background Color    
-      ✨ Draw Line    
-      ✨ Eraser    
-      ✨ Change Stroke Width    
-      ✨ Reset    
-  ✨ Image Upload    
-      ✨ Upload Image    
-      ✨ Choose Image and Add it on Canvas    
-  ✨ Download as png    
+✨ Canvas  
+ ✨ Controls  
+ ✨ Change Background Color  
+ ✨ Draw Line  
+ ✨ Eraser  
+ ✨ Change Stroke Width  
+ ✨ Reset  
+ ✨ Image Upload  
+ ✨ Upload Image  
+ ✨ Choose Image and Add it on Canvas  
+ ✨ Download as png
 
   <h3>🔮 v1.0.1 (TO-BE)</h3>
 
-  ✨ Create Patterns    
+✨ Create Patterns
 
   <h3>📁 Folder Structure</h3>
   <img width="295" alt="스크린샷 2023-01-01 오후 7 34 55" src="https://user-images.githubusercontent.com/52883505/210167816-57341d97-ea69-4930-9ccb-d4d8a9d1a7b6.png">

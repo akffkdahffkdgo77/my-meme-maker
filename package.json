@@ -8,7 +8,7 @@
         "start": "next start",
         "lint": "eslint '*.{ts,tsx,js,jsx}'",
         "lint:fix": "eslint --fix '*.{ts,tsx,js,jsx}'",
-        "format": "prettier --write ."
+        "prettier": "prettier --write ."
     },
     "dependencies": {
         "next": "12.3.0",

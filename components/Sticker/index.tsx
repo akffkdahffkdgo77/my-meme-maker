@@ -2,9 +2,9 @@ import React, { FormEvent } from 'react';
 
 import Image from 'next/image';
 
-import { ISticker } from 'components/Sticker/types';
+import type { StickerPropsType } from 'components/Sticker/types';
 
-export default function Sticker({ imageList, setImageList, handleIndex }: ISticker) {
+export default function Sticker({ imageList, setImageList, onIndexChange }: StickerPropsType) {
     const onChange = (e: FormEvent<HTMLInputElement>) => {
         const file = e.currentTarget.files?.[0];
         if (file) {
@@ -45,7 +45,7 @@ export default function Sticker({ imageList, setImageList, handleIndex }: IStick
                         alt="small animal"
                         width={100}
                         height={150}
-                        onClick={() => handleIndex(index)}
+                        onClick={() => onIndexChange(index)}
                     />
                 ))}
             </div>

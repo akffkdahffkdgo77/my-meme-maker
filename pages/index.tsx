@@ -4,15 +4,13 @@ import Head from 'next/head';
 
 import { ColorPicker, Controls, Sticker, Stroke } from 'components';
 
-import type { NextPage } from 'next';
-
-const Home: NextPage = () => {
+export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const selectedRef = useRef<number>(-1);
-    const colorRef = useRef('');
     const lineWidthRef = useRef(2.5);
     const backgroundRef = useRef('');
 
+    const [color, setColor] = useState('');
     const [mode, setMode] = useState('pattern');
     const [erase, setErase] = useState(false);
     const [imageList, setImageList] = useState<string[]>([]);
@@ -28,7 +26,7 @@ const Home: NextPage = () => {
         selectedRef.current = index;
     };
 
-    const handleColor = (color: string) => {
+    const handleColor = (newColor: string) => {
         if (erase) {
             return;
         }
@@ -36,17 +34,17 @@ const Home: NextPage = () => {
         if (mode === 'background') {
             const canvas = canvasRef.current;
             const context = canvas!.getContext('2d')!;
-            backgroundRef.current = color;
-            context.fillStyle = color;
+            backgroundRef.current = newColor;
+            context.fillStyle = newColor;
             context.fillRect(0, 0, 500, 500);
         } else {
-            colorRef.current = color;
+            setColor(newColor);
         }
     };
 
     const handleBackground = () => {
         if (mode === 'background') {
-            colorRef.current = '#2c2c2c';
+            setColor('#2c2c2c');
         }
         setMode((prev) => (prev === 'background' ? '' : 'background'));
     };
@@ -66,10 +64,10 @@ const Home: NextPage = () => {
     const handleErase = () => {
         if (erase) {
             setErase(false);
-            colorRef.current = '#2c2c2c';
+            setColor('#2c2c2c');
         } else {
             setErase(true);
-            colorRef.current = backgroundRef.current;
+            setColor(backgroundRef.current);
             lineWidthRef.current = 25;
         }
     };
@@ -80,10 +78,10 @@ const Home: NextPage = () => {
         context.clearRect(0, 0, 500, 500);
     };
 
-    const onMouseMove = (e: MouseEvent<HTMLCanvasElement>) => {
+    const handleMouseMove = (e: MouseEvent<HTMLCanvasElement>) => {
         const canvas = canvasRef.current;
         const context = canvas!.getContext('2d')!;
-        context.strokeStyle = colorRef.current;
+        context.strokeStyle = color;
         context.lineWidth = lineWidthRef.current;
 
         const xCoord = e.nativeEvent.offsetX;
@@ -98,7 +96,7 @@ const Home: NextPage = () => {
         }
     };
 
-    const onClick = (e: MouseEvent<HTMLCanvasElement>) => {
+    const handleClick = (e: MouseEvent<HTMLCanvasElement>) => {
         const canvas = canvasRef.current;
         const context = canvas!.getContext('2d')!;
         if (selectedRef.current !== -1) {
@@ -126,9 +124,9 @@ const Home: NextPage = () => {
                         width={500}
                         height={500}
                         ref={canvasRef}
-                        onClick={onClick}
+                        onClick={handleClick}
                         onMouseUp={() => setMode((prev) => (prev === 'background' ? prev : ''))}
-                        onMouseMove={onMouseMove}
+                        onMouseMove={handleMouseMove}
                         onMouseDown={() => setMode((prev) => (prev === 'background' ? prev : 'draw'))}
                         onMouseLeave={() => setMode((prev) => (prev === 'background' ? prev : ''))}
                     />
@@ -136,21 +134,19 @@ const Home: NextPage = () => {
                 <div className="w-full justify-self-center col-start-2 border border-white rounded-md pt-5 pb-2.5">
                     <section className="mb-10 flex justify-center flex-col items-center">
                         <h2 className="text-xl mb-5 text-center font-bold font-mono">Controls</h2>
-                        <Stroke handleLineWidth={handleLineWidth} />
+                        <Stroke onLineWidthChange={handleLineWidth} />
                         <Controls
                             mode={mode}
-                            handleBackground={handleBackground}
-                            handleErase={handleErase}
-                            handleSave={handleSave}
-                            handleReset={handleReset}
+                            onBackgroundChange={handleBackground}
+                            onErase={handleErase}
+                            onSave={handleSave}
+                            onReset={handleReset}
                         />
-                        <ColorPicker handleColor={handleColor} />
+                        <ColorPicker selectedColor={color} onColorChange={handleColor} />
                     </section>
-                    <Sticker imageList={imageList} setImageList={setImageList} handleIndex={handleIndex} />
+                    <Sticker imageList={imageList} setImageList={setImageList} onIndexChange={handleIndex} />
                 </div>
             </section>
         </>
     );
-};
-
-export default Home;
+}

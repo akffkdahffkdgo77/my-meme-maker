@@ -1,35 +1,35 @@
 import React from 'react';
 
-import { IControls } from 'components/Controls/types';
+import type { ControlsPropsType } from 'components/Controls/types';
 
-export default function Controls({ mode, handleBackground, handleSave, handleErase, handleReset }: IControls) {
+export default function Controls({ mode, onBackgroundChange, onSave, onErase, onReset }: ControlsPropsType) {
     return (
         <div className="flex items-center gap-2.5 my-5">
             <button
                 type="button"
                 className="px-2.5 py-[5px] border border-white uppercase font-bold rounded-md"
-                onClick={handleBackground}
+                onClick={onBackgroundChange}
             >
                 {mode === 'background' ? 'Paint' : 'Fill'}
             </button>
             <button
                 type="button"
                 className="px-2.5 py-[5px] border border-white uppercase font-bold rounded-md"
-                onClick={handleSave}
+                onClick={onSave}
             >
                 Save
             </button>
             <button
                 type="button"
                 className="px-2.5 py-[5px] border border-white uppercase font-bold rounded-md"
-                onClick={handleErase}
+                onClick={onErase}
             >
                 Erase
             </button>
             <button
                 type="button"
                 className="px-2.5 py-[5px] border border-white uppercase font-bold rounded-md"
-                onClick={handleReset}
+                onClick={onReset}
             >
                 Reset
             </button>

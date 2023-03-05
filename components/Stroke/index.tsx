@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { IStroke } from 'components/Stroke/types';
+import type { StrokePropsType } from 'components/Stroke/types';
 
-export default function Stroke({ handleLineWidth }: IStroke) {
+export default function Stroke({ onLineWidthChange }: StrokePropsType) {
     return (
         <div className="mt-2.5">
             <input
@@ -12,7 +12,7 @@ export default function Stroke({ handleLineWidth }: IStroke) {
                 max="5.0"
                 defaultValue="2.5"
                 step="0.1"
-                onChange={handleLineWidth}
+                onChange={onLineWidthChange}
             />
         </div>
     );

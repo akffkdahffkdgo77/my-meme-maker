@@ -1,7 +1,7 @@
-export interface IControls {
+export type ControlsPropsType = {
     mode: string;
-    handleBackground: () => void;
-    handleSave: () => void;
-    handleErase: () => void;
-    handleReset: () => void;
-}
+    onBackgroundChange: () => void;
+    onErase: () => void;
+    onReset: () => void;
+    onSave: () => void;
+};

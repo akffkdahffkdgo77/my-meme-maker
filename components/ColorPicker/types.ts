@@ -1,3 +1,4 @@
-export interface IColorPicker {
-    handleColor: (color: string) => void;
-}
+export type ColorPickerPropsType = {
+    selectedColor: string;
+    onColorChange: (color: string) => void;
+};

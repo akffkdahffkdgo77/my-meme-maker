@@ -1,3 +1,3 @@
-export interface IBaseLayout {
+export type BaseLayoutPropsType = {
     children: React.ReactNode;
-}
+};

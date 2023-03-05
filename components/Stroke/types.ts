@@ -1,3 +1,3 @@
-export interface IStroke {
-    handleLineWidth: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+export type StrokePropsType = {
+    onLineWidthChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};

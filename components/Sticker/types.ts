@@ -1,5 +1,5 @@
-export interface ISticker {
+export type StickerPropsType = {
     imageList: string[];
     setImageList: React.Dispatch<React.SetStateAction<string[]>>;
-    handleIndex: (index: number) => void;
-}
+    onIndexChange: (index: number) => void;
+};
