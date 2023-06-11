@@ -40,10 +40,10 @@
 
 - [ ] Create Patterns
 
-### Atomic Design
+### 📁 Atomic Design
 ```
 atoms - Independent HTML Tag (input tag, h1, h2, canvas)
-molecules - Relatively Simple Components, Single Responsibility (Control Button, Upload Button, Color Button, Stroke
+molecules - Relatively Simple Components, Single Responsibility (Control Button, Upload Button, Color Button, Stroke)
 organisms - Layout components, UI Interface (Color Picker, Controls (a group of control buttons), Sticker)
 ```
 
