@@ -1,8 +1,11 @@
 import React, { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 
-import Head from 'next/head';
-
-import { ColorPicker, Controls, Sticker, Stroke } from 'components';
+import Canvas from 'components/atoms/Canvas';
+import Heading from 'components/atoms/Heading';
+import Stroke from 'components/molecules/Stroke';
+import ColorPicker from 'components/organisms/ColorPicker';
+import Controls from 'components/organisms/Controls';
+import Sticker from 'components/organisms/Sticker';
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -111,42 +114,48 @@ export default function Home() {
         }
     };
 
+    const handleImageUpload = (e: React.FormEvent<HTMLInputElement>) => {
+        const file = e.currentTarget.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function onLoad() {
+                setImageList((prev) => [...prev, URL.createObjectURL(file)]);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     return (
-        <>
-            <Head>
-                <title>My Sticker</title>
-            </Head>
-            <section className="grid grid-cols-[1fr_400px] gap-x-5">
-                <h1 className="col-span-2 text-4xl font-bold font-mono text-center mb-10">My Sticker</h1>
-                <div className="flex items-center justify-center">
-                    <canvas
-                        className="border rounded-md border-white bg-white"
-                        width={500}
-                        height={500}
-                        ref={canvasRef}
-                        onClick={handleClick}
-                        onMouseUp={() => setMode((prev) => (prev === 'background' ? prev : ''))}
-                        onMouseMove={handleMouseMove}
-                        onMouseDown={() => setMode((prev) => (prev === 'background' ? prev : 'draw'))}
-                        onMouseLeave={() => setMode((prev) => (prev === 'background' ? prev : ''))}
+        <section className="grid grid-cols-[1fr_400px] gap-x-5">
+            <Heading component="h1" text="My Sticker" />
+            <div className="flex items-center justify-center">
+                <Canvas
+                    width={500}
+                    height={500}
+                    ref={canvasRef}
+                    onClick={handleClick}
+                    onMouseUp={() => setMode((prev) => (prev === 'background' ? prev : ''))}
+                    onMouseMove={handleMouseMove}
+                    onMouseDown={() => setMode((prev) => (prev === 'background' ? prev : 'draw'))}
+                    onMouseLeave={() => setMode((prev) => (prev === 'background' ? prev : ''))}
+                    className="border rounded-md border-white bg-white"
+                />
+            </div>
+            <div className="w-full justify-self-center col-start-2 border border-white rounded-md pt-5 pb-2.5">
+                <section className="mb-10 flex justify-center flex-col items-center">
+                    <Heading component="h2" text="Controls" />
+                    <Stroke onLineWidthChange={handleLineWidth} />
+                    <Controls
+                        mode={mode}
+                        onBackgroundChange={handleBackground}
+                        onErase={handleErase}
+                        onSave={handleSave}
+                        onReset={handleReset}
                     />
-                </div>
-                <div className="w-full justify-self-center col-start-2 border border-white rounded-md pt-5 pb-2.5">
-                    <section className="mb-10 flex justify-center flex-col items-center">
-                        <h2 className="text-xl mb-5 text-center font-bold font-mono">Controls</h2>
-                        <Stroke onLineWidthChange={handleLineWidth} />
-                        <Controls
-                            mode={mode}
-                            onBackgroundChange={handleBackground}
-                            onErase={handleErase}
-                            onSave={handleSave}
-                            onReset={handleReset}
-                        />
-                        <ColorPicker selectedColor={color} onColorChange={handleColor} />
-                    </section>
-                    <Sticker imageList={imageList} setImageList={setImageList} onIndexChange={handleIndex} />
-                </div>
-            </section>
-        </>
+                    <ColorPicker selectedColor={color} onColorChange={handleColor} />
+                </section>
+                <Sticker imageList={imageList} onChange={handleImageUpload} onIndexChange={handleIndex} />
+            </div>
+        </section>
     );
 }

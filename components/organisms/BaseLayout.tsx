@@ -1,6 +1,8 @@
 import React from 'react';
 
-import type { BaseLayoutPropsType } from 'layouts/BaseLayout/types';
+type BaseLayoutPropsType = {
+    children: React.ReactNode;
+};
 
 export default function BaseLayout({ children }: BaseLayoutPropsType) {
     return (
