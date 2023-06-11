@@ -23,6 +23,7 @@ module.exports = {
     },
     plugins: ['prettier', '@typescript-eslint', 'import'],
     rules: {
+        'react/no-array-index-key': 'off',
         'react/jsx-props-no-spreading': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         'import/extensions': [
@@ -44,7 +45,7 @@ module.exports = {
                     {
                         pattern: 'styles/**',
                         group: 'object',
-                        position: 'before'
+                        position: 'after'
                     }
                 ],
                 pathGroupsExcludedImportTypes: ['react'],
