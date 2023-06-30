@@ -1,8 +1,7 @@
 import Head from 'next/head';
 
-import BaseLayout from 'components/organisms/BaseLayout';
-
-import 'styles/globals.css';
+import BaseLayout from '@organisms/BaseLayout';
+import '@styles/globals.css';
 
 import type { AppProps } from 'next/app';
 

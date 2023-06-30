@@ -1,11 +1,8 @@
 import React, { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 
-import Canvas from 'components/atoms/Canvas';
-import Heading from 'components/atoms/Heading';
-import Stroke from 'components/molecules/Stroke';
-import ColorPicker from 'components/organisms/ColorPicker';
-import Controls from 'components/organisms/Controls';
-import Sticker from 'components/organisms/Sticker';
+import { Canvas, Heading } from '@atoms';
+import Stroke from '@molecules/Stroke';
+import { ColorPicker, Controls, Sticker } from '@organisms';
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -138,11 +135,11 @@ export default function Home() {
                     onMouseMove={handleMouseMove}
                     onMouseDown={() => setMode((prev) => (prev === 'background' ? prev : 'draw'))}
                     onMouseLeave={() => setMode((prev) => (prev === 'background' ? prev : ''))}
-                    className="border rounded-md border-white bg-white"
+                    className="rounded-md border border-white bg-white"
                 />
             </div>
-            <div className="w-full justify-self-center col-start-2 border border-white rounded-md pt-5 pb-2.5">
-                <section className="mb-10 flex justify-center flex-col items-center">
+            <div className="col-start-2 w-full justify-self-center rounded-md border border-white pb-2.5 pt-5">
+                <section className="mb-10 flex flex-col items-center justify-center">
                     <Heading component="h2" text="Controls" />
                     <Stroke onLineWidthChange={handleLineWidth} />
                     <Controls

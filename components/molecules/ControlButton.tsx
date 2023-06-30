@@ -10,7 +10,7 @@ export default function ControlButton({ onClick, text }: ControlButtonType) {
         <button
             type="button"
             onClick={onClick}
-            className="px-2.5 py-[5px] border border-white uppercase font-bold rounded-md"
+            className="rounded-md border border-white px-2.5 py-[5px] font-bold uppercase"
         >
             {text}
         </button>

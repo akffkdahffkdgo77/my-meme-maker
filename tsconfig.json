@@ -14,7 +14,16 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "incremental": true,
-        "baseUrl": "."
+        "baseUrl": ".",
+        "paths": {
+            "@atoms": ["components/atoms/index.ts"],
+            "@atoms/*": ["components/atoms/*"],
+            "@molecules": ["components/molecules/index.ts"],
+            "@molecules/*": ["components/molecules/*"],
+            "@organisms": ["components/organisms/index.ts"],
+            "@organisms/*": ["components/organisms/*"],
+            "@styles/*": ["styles/*"]
+        }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules"]

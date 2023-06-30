@@ -6,6 +6,6 @@ type BaseLayoutPropsType = {
 
 export default function BaseLayout({ children }: BaseLayoutPropsType) {
     return (
-        <main className="flex justify-center items-center min-h-screen py-10 bg-[#191919] text-white">{children}</main>
+        <main className="flex min-h-screen items-center justify-center bg-[#191919] py-10 text-white">{children}</main>
     );
 }

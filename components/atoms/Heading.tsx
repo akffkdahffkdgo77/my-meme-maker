@@ -10,9 +10,9 @@ type HeadingType = {
 function getComponent(type: ComponentType, text: string) {
     switch (type) {
         case 'h1':
-            return <h1 className="col-span-2 text-4xl font-bold font-mono text-center mb-10">{text}</h1>;
+            return <h1 className="col-span-2 mb-10 text-center font-mono text-4xl font-bold">{text}</h1>;
         case 'h2':
-            return <h2 className="w-full text-xl mb-5 text-center font-bold font-mono">{text}</h2>;
+            return <h2 className="mb-5 w-full text-center font-mono text-xl font-bold">{text}</h2>;
         default:
             return null;
     }

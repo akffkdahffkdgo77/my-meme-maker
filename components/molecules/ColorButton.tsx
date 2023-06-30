@@ -16,7 +16,7 @@ export default function ColorButton({ name, color, onColorChange, selectedColor 
             onClick={() => onColorChange(color)}
             className={`${
                 selectedColor === color ? 'animate-pulse' : ''
-            } w-[30px] h-[30px] rounded-full border border-white`}
+            } h-[30px] w-[30px] rounded-full border border-white`}
             style={{ backgroundColor: color }}
         />
     );

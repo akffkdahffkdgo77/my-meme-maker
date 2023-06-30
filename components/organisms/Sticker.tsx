@@ -18,7 +18,7 @@ export default function Sticker({ imageList, onChange, onIndexChange }: StickerP
                 <Heading component="h2" text="Stickers" />
                 <UploadButton text="Upload" onChange={onChange} />
             </div>
-            <div className="flex gap-5 flex-wrap p-5">
+            <div className="flex flex-wrap gap-5 p-5">
                 {imageList.map((image, index) => (
                     <Image
                         key={index}
