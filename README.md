@@ -3,7 +3,7 @@
   <tbody>
     <tr>
       <th align="left" width="200">Project Description</th>
-      <td><strong><i>나만의 밈 만들기</i></strong></td>
+      <td><strong><i>✨ 나만의 밈 만들기 ✨</i></strong></td>
     </tr>
     <tr>
       <th align="left" width="200">Project Group</th>
@@ -44,10 +44,6 @@
   </tbody>
 </table>
 
-## Demo
-
-_Coming Soon...!_
-
 ## Project History
 
 ### 😎 v1.0
@@ -69,8 +65,13 @@ _Coming Soon...!_
     -   [x] Atomic Design
 -   [x] 1차 코드 리팩토링
 
-### 🔮 v1.2 (가을 업데이트)
+### 🔮 v1.1 (여름 / 가을 업데이트)
 
+-   [ ] UI 업데이트
+-   [ ] Text 추가하기
 -   [ ] 2차 코드 리팩토링
     -   [ ] NextJS v13
--   [ ] Text 추가하기
+
+## Demo
+
+_Coming Soon...!_
